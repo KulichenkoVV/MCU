@@ -1,0 +1,14 @@
+*.swp
+*.d
+*.o
+generated.*.ld
+*.elf
+*.hex
+*.bin
+*.axf
+*.htm
+*.lnp
+*.map
+*.sct
+*.dep
+
