@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "led.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -64,6 +64,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	led_s_t	my_led;
 
   /* USER CODE END 1 */
 
@@ -86,13 +87,30 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+	led_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		my_led.state = LED_ON;
+		my_led.color = LED_GREEN;
+		led_set_state(my_led);
+		HAL_Delay(500);
+		my_led.color = LED_ORANGE;
+		led_set_state(my_led);
+		HAL_Delay(500);
+		my_led.color = LED_RED;
+		led_set_state(my_led);
+		HAL_Delay(500);
+		my_led.color = LED_BLUE;
+		led_set_state(my_led);
+		HAL_Delay(500);
+		my_led.color = LED_ALL;
+		my_led.state = LED_OFF;
+		led_set_state(my_led);
+		HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
