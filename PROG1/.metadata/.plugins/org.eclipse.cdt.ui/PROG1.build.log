@@ -1,17 +1,11 @@
-14:21:01 **** Incremental Build of configuration Debug for project PROG1 ****
+14:37:27 **** Incremental Build of configuration Debug for project PROG1 ****
 make -j12 all 
 arm-none-eabi-gcc "../components1/led.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x6 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"components1/led.d" -MT"components1/led.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "components1/led.o"
-arm-none-eabi-gcc -o "PROG1.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Reposit\GitHub\MCU\PROG1\PROG1\STM32F030F4PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PROG1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PROG1.elf
- 
-arm-none-eabi-size  PROG1.elf 
-arm-none-eabi-objdump -h -S PROG1.elf  > "PROG1.list"
-   text	   data	    bss	    dec	    hex	filename
-   4820	     20	   1572	   6412	   190c	PROG1.elf
-Finished building: default.size.stdout
- 
-Finished building: PROG1.list
- 
+../components1/led.c:13:1: error: expected identifier or '(' before '{' token
+   13 | {
+      | ^
+make: *** [components1/subdir.mk:19: components1/led.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-14:21:01 Build Finished. 0 errors, 0 warnings. (took 551ms)
+14:37:28 Build Failed. 2 errors, 0 warnings. (took 302ms)
 
