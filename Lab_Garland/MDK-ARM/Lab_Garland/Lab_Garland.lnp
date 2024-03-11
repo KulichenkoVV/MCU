@@ -1,0 +1,26 @@
+--cpu=Cortex-M4.fp.sp
+"lab_garland\startup_stm32f407xx.o"
+"lab_garland\main.o"
+"lab_garland\gpio.o"
+"lab_garland\stm32f4xx_it.o"
+"lab_garland\stm32f4xx_hal_msp.o"
+"lab_garland\stm32f4xx_hal_tim.o"
+"lab_garland\stm32f4xx_hal_tim_ex.o"
+"lab_garland\stm32f4xx_hal_rcc.o"
+"lab_garland\stm32f4xx_hal_rcc_ex.o"
+"lab_garland\stm32f4xx_hal_flash.o"
+"lab_garland\stm32f4xx_hal_flash_ex.o"
+"lab_garland\stm32f4xx_hal_flash_ramfunc.o"
+"lab_garland\stm32f4xx_hal_gpio.o"
+"lab_garland\stm32f4xx_hal_dma_ex.o"
+"lab_garland\stm32f4xx_hal_dma.o"
+"lab_garland\stm32f4xx_hal_pwr.o"
+"lab_garland\stm32f4xx_hal_pwr_ex.o"
+"lab_garland\stm32f4xx_hal_cortex.o"
+"lab_garland\stm32f4xx_hal.o"
+"lab_garland\stm32f4xx_hal_exti.o"
+"lab_garland\system_stm32f4xx.o"
+--strict --scatter "Lab_Garland\Lab_Garland.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Lab_Garland.map" -o Lab_Garland\Lab_Garland.axf
