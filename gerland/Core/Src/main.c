@@ -22,7 +22,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "gerland.h"
+#include "led.h"
+#include "button.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -64,7 +65,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	gerland_s_t gerland;
+	led_s_t my_led;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -86,21 +87,27 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-	gerland_init();
+	led_init();
+	button_init();
+	
+	my_led.color = LED_GREEN;
+	my_led.state = LED_ON;
+	led_set_state(my_led);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		gerland.speed = GERLAND_MEDIUM;
-		gerland.repetitions = 10;
-		gerland.mode = GERLAND_CYCLE;
-		gerland_run(gerland);
-		gerland.speed = GERLAND_SLOW;
-		gerland.repetitions = 20;
-		gerland.mode = GERLAND_SEQUENTIALLY;
-		gerland_run(gerland);
+		if(PRESSED == button_get_state()){
+			if(my_led.state == LED_OFF){
+				my_led.state = LED_ON;
+			}
+			else{
+				my_led.state = LED_OFF;
+			}
+			led_set_state(my_led);
+		}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
