@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "led.h"
+#include "button.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -87,6 +88,8 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
     led_init();
+    button_init();
+    
     my_led.color = LED_GREEN;
     my_led.state = LED_ON;
     led_set_state(my_led);
@@ -96,6 +99,19 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+      if (PRESSED == button_get_state())
+      {
+          if (my_led.state == LED_OFF)
+          {
+              my_led.state = LED_ON;
+          }
+          else
+          {
+              my_led.state = LED_OFF;
+          }
+          led_set_state(my_led);
+          flag_button_state = 0;
+      }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
