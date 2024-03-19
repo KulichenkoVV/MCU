@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "button.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -86,7 +86,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  button_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -94,7 +94,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  if (PRESSED == button_get_state())
+	  {
+		  HAL_GPIO_TogglePin(GPIOB, LED_0);
+	  }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

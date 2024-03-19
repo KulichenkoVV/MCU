@@ -51,7 +51,7 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+callback_t register_calback = NULL;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -140,6 +140,27 @@ void SysTick_Handler(void)
 /* please refer to the startup file (startup_stm32f0xx.s).                    */
 /******************************************************************************/
 
-/* USER CODE BEGIN 1 */
+/**
+  * @brief This function handles EXTI line 4 to 15 interrupts.
+  */
+void EXTI4_15_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI4_15_IRQn 0 */
+	if (register_calback != NULL)
+	{
+		register_calback();
+	}
 
+  /* USER CODE END EXTI4_15_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(BUTTON_Pin);
+  /* USER CODE BEGIN EXTI4_15_IRQn 1 */
+
+  /* USER CODE END EXTI4_15_IRQn 1 */
+}
+
+/* USER CODE BEGIN 1 */
+void it_set_callback(callback_t p_cb)
+{
+	register_calback = p_cb;
+}
 /* USER CODE END 1 */

@@ -9,16 +9,24 @@
 #include "gpio.h"
 
 void led_init(void);
-void led_set_state(led_s_t led);
+void led_set_state(led_s_t led)
 {
 	if (led.state == LED_ON)
-	{
-		switch (led.nember)
 		{
-		case(LED_1)
-		{
-			HAL_
+			switch (led.number)
+			{
+			case LED_1:
+				{
+
+					break;
+				}
+			case LED_2:
+				{
+
+					break;
+				}
+
+			}
 		}
-		}
+
 	}
-}

@@ -1,11 +1,22 @@
-14:37:27 **** Incremental Build of configuration Debug for project PROG1 ****
+00:11:35 **** Incremental Build of configuration Debug for project PROG1 ****
 make -j12 all 
-arm-none-eabi-gcc "../components1/led.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x6 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"components1/led.d" -MT"components1/led.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "components1/led.o"
-../components1/led.c:13:1: error: expected identifier or '(' before '{' token
-   13 | {
-      | ^
-make: *** [components1/subdir.mk:19: components1/led.o] Error 1
+arm-none-eabi-gcc "../components2/button.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x6 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"components2/button.d" -MT"components2/button.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "components2/button.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x6 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../components2/button.c:19:18: error: conflicting types for 'button_get_state'; have 'button_state_e_t(void)'
+   19 | button_state_e_t button_get_state(void)
+      |                  ^~~~~~~~~~~~~~~~
+In file included from ../components2/button.c:8:
+../components2/button.h:18:6: note: previous declaration of 'button_get_state' with type 'void(void)'
+   18 | void button_get_state(void);
+      |      ^~~~~~~~~~~~~~~~
+make: *** [components2/subdir.mk:19: components2/button.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/main.c:25:10: fatal error: button.h: No such file or directory
+   25 | #include "button.h"
+      |          ^~~~~~~~~~
+compilation terminated.
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
 "make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-14:37:28 Build Failed. 2 errors, 0 warnings. (took 302ms)
+00:11:35 Build Failed. 5 errors, 0 warnings. (took 447ms)
 
